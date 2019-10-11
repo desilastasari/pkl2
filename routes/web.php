@@ -22,22 +22,28 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['prefix' =>'admin', 'middleware' =>['auth','role:admin']],function(){
     Route::get('/', function(){
         return view('admin.index');
-            Route::resource('peninjaman','PeninjamanController');
-        Route::resource('buku','BukuController');
-        Route::resource('petugas','PetugasController');
-        Route::resource('detail','DetailController');
-        Route::resource('penerbit','PenerbitController');
-
+        
         
     });
-    //Route::resource('user','UserController')
+            Route::resource('peninjaman','PeninjamanController');
+            Route::resource('buku','BukuController');
+            Route::resource('petugas','PetugasController');
+            Route::resource('detail','DetailController');
+            Route::resource('penerbit','PenerbitController');
+            Route::resource('kategori','KategoriController');
+            Route::resource('buku','BukuController');
+            Route::resource('pendaftaran','PendaftaranController');
+            Route::resource('penimjam','PenimjamController');
 
+
+    Route::resource('user','UserController');
+ 
     // Route::get('/admin', function () {
     // return view('peminjaman.index')
 
 });
 
-        Route::resource('kategori','KategoriController');
+            Route::resource('detail','DetailController');
             Route::resource('buku','BukuController');
             Route::resource('pendaftaran','PendaftaranController');
             Route::resource('penimjam','PenimjamController');

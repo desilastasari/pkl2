@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 
 @section('content')
@@ -12,19 +12,19 @@
                         {{ csrf_field() }}
 
    
-    <div class="form-group">
-        <label for="">Nama Petugas</label>
-        <input class="form-control" type="text" name="ptg_nama">
-    </div>
-    
-    
-    <button type="submit" name="Simpan"
-     class="btn btn-md btn-info">Simpan</button>
-    <a name="" id="" class="btn btn-md btn-warning" href="{{route('petugas.index')}}" role="button">kembali</a>
-        </form>
-            </div>
-                </div>
-                    </div>
+                        <div class="form-group">
+                            <label for="">Nama Petugas</label>
+                            <input class="form-control" type="text" name="ptg_nama">
                         </div>
-                            </div>
-                                @endsection
+                        
+    
+                    <button type="submit" name="Simpan"
+                    class="btn btn-md btn-info">Simpan</button>
+                    <a name="" id="" class="btn btn-md btn-warning" href="{{route('petugas.index')}}" role="button">kembali</a>
+                     </form>
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+ @endsection

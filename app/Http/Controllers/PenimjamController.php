@@ -14,7 +14,7 @@ class PenimjamController extends Controller
      */
     public function index()
     {
-        $peminjam = Penimjam::all();
+        $penimjam = Penimjam::all();
         return view('peminjam.index', compact('penimjam'));
     }
 
@@ -25,7 +25,7 @@ class PenimjamController extends Controller
      */
     public function create()
     {
-       $peminjam = Penimjam::all();
+       $penimjam = Penimjam::all();
         return view('peminjam.create');
     }
 
@@ -37,10 +37,10 @@ class PenimjamController extends Controller
      */
     public function store(Request $request)
     {
-        $peminjam = new Penimjam();
-        $peminjam->pjm_nama = $request->pjm_nama;
-        $peminjam->pjm_alamat = $request->pjm_alamat;
-        $peminjam->pjm_tlp = $request->pjm_tlp;
+        $penimjam = new Penimjam();
+        $penimjam->pjm_nama = $request->pjm_nama;
+        $penimjam->pjm_alamat = $request->pjm_alamat;
+        $penimjam->pjm_telp = $request->pjm_telp;
 
         if($request->hasFile('pjm_foto')) {
             $file = $request->file('pjm_foto');
@@ -51,11 +51,11 @@ class PenimjamController extends Controller
                 $Path,
                 $filename
             );
-            $peminjam->pjm_foto = $filename;
+            $penimjam->pjm_foto = $filename;
         }
        
-        $peminjam->save();
-        return redirect()->route('peminjam.index');
+        $penimjam->save();
+        return redirect()->route('penimjam.index');
     }
 
     /**
@@ -64,9 +64,10 @@ class PenimjamController extends Controller
      * @param  \App\penimjam  $penimjam
      * @return \Illuminate\Http\Response
      */
-    public function show(penimjam $penimjam)
+    public function show( $id)
     {
-        //
+        $penimjam = Penimjam::findOrFail($id);
+        return view('peminjam.show', compact('penimjam'));
     }
 
     /**
@@ -75,9 +76,10 @@ class PenimjamController extends Controller
      * @param  \App\penimjam  $penimjam
      * @return \Illuminate\Http\Response
      */
-    public function edit(penimjam $penimjam)
+    public function edit($id)
     {
-        //
+           $penimjam = Penimjam::findOrFail($id);
+        return view('peminjam.edit', compact('penimjam'));
     }
 
     /**
@@ -87,9 +89,31 @@ class PenimjamController extends Controller
      * @param  \App\penimjam  $penimjam
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, penimjam $penimjam)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+         'pjm_nama' => 'required',
+         'pjm_alamat' => 'required',
+         'pjm_telp' => 'required',
+        ]);
+        $penimjam = Penimjam::findOrFail($id);
+        $penimjam->pjm_nama = $request->pjm_nama;
+        $penimjam->pjm_alamat = $request->pjm_alamat;
+        $penimjam->pjm_telp= $request->pjm_telp;
+
+        if($request->hasFile('pjm_foto')) {
+            $file = $request->file('pjm_foto');
+            $Path = public_path() .'/assets/img/peminjam/';
+            $filename ='_'
+            .$file->getClientOriginalName();
+            $upload = $file->move(
+                $Path,
+                $filename
+            );
+            $penimjam->pjm_foto = $filename;
+        }
+        $penimjam->save();
+        return redirect()->route('penimjam.index');
     }
 
     /**
@@ -98,8 +122,9 @@ class PenimjamController extends Controller
      * @param  \App\penimjam  $penimjam
      * @return \Illuminate\Http\Response
      */
-    public function destroy(penimjam $penimjam)
+    public function destroy($id)
     {
-        //
+        $penimjam = Penimjam::destroy($id);
+        return redirect()->route('penimjam.index');
     }
 }

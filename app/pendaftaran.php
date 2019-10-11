@@ -10,10 +10,20 @@ class pendaftaran extends Model
                               'peminjams_id',
                               'kartu_pembuatan',
                               'kartu_akhir',
-                              'kartu_aktif'];
+                              ];
    public function penimjam(){
     	return $this->belongsTo('App\penimjam');
     }   
+
+     public function petugas()
+    {
+        return $this->belongsTo('App\petugas','petugas_id');
+    }
+
+    public function penimjams()
+    {
+        return $this->belongsTo('App\penimjam','peminjams_id');
+    }
 
     
 }

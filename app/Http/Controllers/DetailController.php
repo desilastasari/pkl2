@@ -25,7 +25,9 @@ class DetailController extends Controller
      */
     public function create()
     {
-        //
+        
+        $detail = Detail::all();
+        return view('admin.detail.index');
     }
 
     /**
@@ -36,7 +38,16 @@ class DetailController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $detail = new Detail();
+        $detail->penimjams_id = $request->penimjams_id;
+        $detail->bukus_id = $request->bukus_id;
+        $detail->detail_tgl_kembali = $request->detail_tgl_kembali;
+        $detail->detail_denda = $request->detail_denda;
+        $detail->detail_kembali = $request->detail_kembali;
+
+       
+        $detail->save();
+        return redirect()->route('detail.index');
     }
 
     /**

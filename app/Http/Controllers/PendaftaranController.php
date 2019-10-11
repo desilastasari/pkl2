@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\pendaftaran;
+use App\petugas;
+use App\penimjam;
 use Illuminate\Http\Request;
 
 class PendaftaranController extends Controller
@@ -25,9 +27,10 @@ class PendaftaranController extends Controller
      */
     public function create()
     {
-        
+        $petugas = Petugas::all();
+        $penimjam = Penimjam::all();
         $pendaftaran = Pendaftaran::all();
-        return view('pendaftaran.create');
+        return view('pendaftaran.create',compact('pendaftaran','petugas','penimjam'));
     }
 
     /**
@@ -39,11 +42,11 @@ class PendaftaranController extends Controller
     public function store(Request $request)
     {
         $pendaftaran = new Pendaftaran();
-        $pendaftaran->petugas_id = $request->petugas_id;
-        $pendaftaran->peminjams_id = $request->peminjams_id;
+        $pendaftaran->petugas_id = $request->ptg_nama;
+        $pendaftaran->peminjams_id = $request->pjm_nama;
         $pendaftaran->kartu_pembuatan = $request->kartu_pembuatan;
         $pendaftaran->kartu_akhir = $request->kartu_akhir;
-        $pendaftaran->kartu_aktif = $request->kartu_aktif;
+        
 
        
         $pendaftaran->save();
@@ -56,9 +59,12 @@ class PendaftaranController extends Controller
      * @param  \App\pendaftaran  $pendaftaran
      * @return \Illuminate\Http\Response
      */
-    public function show(pendaftaran $pendaftaran)
+    public function show( $id)
     {
-        //
+         $petugas = Petugas::all();
+        $penimjam = Penimjam::all();
+        $pendaftaran = Pendaftaran::findOrFail($id);
+        return view('pendaftaran.show', compact('pendaftaran','penimjam','petugas'));
     }
 
     /**
@@ -67,9 +73,12 @@ class PendaftaranController extends Controller
      * @param  \App\pendaftaran  $pendaftaran
      * @return \Illuminate\Http\Response
      */
-    public function edit(pendaftaran $pendaftaran)
+    public function edit($id)
     {
-        //
+         $petugas = Petugas::all();
+        $penimjam = Penimjam::all();
+        $pendaftaran = Pendaftaran::findOrFail($id);
+        return view('pendaftaran.edit', compact('pendaftaran','penimjam','petugas'));
     }
 
     /**
@@ -79,9 +88,19 @@ class PendaftaranController extends Controller
      * @param  \App\pendaftaran  $pendaftaran
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, pendaftaran $pendaftaran)
+    public function update(Request $request,$id)
     {
-        //
+        
+        $pendaftaran = new Pendaftaran();
+        $pendaftaran->petugas_id = $request->ptg_nama;
+        $pendaftaran->peminjams_id = $request->pjm_nama;
+        $pendaftaran->kartu_pembuatan = $request->kartu_pembuatan;
+        $pendaftaran->kartu_akhir = $request->kartu_akhir;
+        
+
+       
+        $pendaftaran->save();
+        return redirect()->route('pendaftaran.index');
     }
 
     /**

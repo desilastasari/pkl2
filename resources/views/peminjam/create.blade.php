@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -25,7 +25,7 @@
                         <input class="form-control" type="file" name="pjm_foto" id="pjm_foto">
                     </div>
                 <button type="submit" name="Simpan" class="btn btn-md btn-info">Simpan</button>
-                <a name="" id="" class="btn btn-md btn-warning" href="{{route('peminjam.index')}}" role="button">kembali</a>
+                <a name="" id="" class="btn btn-md btn-warning" href="{{route('penimjam.index')}}" role="button">kembali</a>
                 </form>
             </div>
         </div>

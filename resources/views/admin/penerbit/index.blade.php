@@ -1,20 +1,17 @@
-@extends('layouts.app')
-
-
-
+@extends('layouts.admin')
 @section('content')
 <section class="page-content container-fluid">
-    <div class="row">
+    <div class="row-18">
         <div class="col-12">
             <div class="card">
                 <h5 class="card-header">Data Penerbit</h5><br>
                 <center>
                         <a href="{{ route('penerbit.create') }}"
-                            class="la la-cloud-upload btn btn-info btn-rfur if you know that im lonelyfur if you know that im lonelyounded btn-floating btn-outline">&nbsp;Tambah Data
+                            class="la la-cloud-upload btn btn-info btn-rfur if you know that im lonelyfur if you know that im lonelyounded btn-float">&nbsp;Tambah Data
                         </a>
                 </center>
                 <div class="card-body">
-                    <table id="bs4-table" class="table table-striped table-bordered" style="width:100%">
+                    <table id="datatable" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr>
                                 <th>Id</th>
@@ -41,12 +38,12 @@
                                    <form action="{{route('penerbit.destroy', $data->id)}}" method="post">
                                         @csrf
 										<input type="hidden" name="_method" value="DELETE">
-										<button type="submit" class="zmdi zmdi-delete btn-rounded btn-floating btn btn-dangerbtn btn-danger btn-outline"> Delete</button>
+										<button type="submit" class="zmdi zmdi-delete btn-rounded btn-floating btn btn-dangerbtn btn-dan"> Delete</button>
 									 <a href="{{route('penerbit.edit', $data->id)}}"
-										class="zmdi zmdi-edit btn btn-warning btn-rounded btn-floating btn-outline"> Edit
+										class="zmdi zmdi-edit btn btn-warning btn-rounded btn-float"> Edit
                                     </a>
                                     <a href="{{route('penerbit.show', $data->id) }}"
-										class="zmdi zmdi-eye btn btn-success btn-rounded btn-floating btn-outline"> Show
+										class="zmdi zmdi-eye btn btn-success btn-rounded btn-float"> Show
                                     </a>
                                     
 									</form>
