@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Membuat Data Petugas</div>
+                <div class="card-header"><center><h3>Membuat Data Petugas</h3></center></div>
                 <div class="card-body">
                     <form action="{{ route('petugas.store') }}" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}

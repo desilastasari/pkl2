@@ -74,7 +74,7 @@
                   <li><!-- start message -->
                     <a href="#">
                       <div class="pull-left">
-                        <img src="{{asset('assets/admin/dist/img/aa.jpg')}}" class="img-circle" alt="User Image">
+                        <img src="{{asset('assets/admin/dist/img/logoo.jpg')}}" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         Support Team
@@ -87,7 +87,7 @@
                   <li>
                     <a href="#">
                       <div class="pull-left">
-                        <img src="{{asset('assets/admin/dist/img/aa.jpg')}}" class="img-circle" alt="User Image">
+                        <img src="{{asset('assets/admin/dist/img/logoo.jpg')}}" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         AdminLTE Design Team
@@ -260,13 +260,13 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="{{asset('assets/admin/dist/img/aa.jpg')}}" class="user-image" alt="User Image">
+              <img src="{{asset('assets/admin/dist/img/logoo.jpg')}}" class="user-image" alt="User Image">
               <span class="hidden-xs"><b> {{ Auth::user()->name }}</b> </span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="{{asset('assets/admin/dist/img/aa.jpg')}}" class="img-circle" alt="User Image">
+                <img src="{{asset('assets/admin/dist/img/logoo.jpg')}}" class="img-circle" alt="User Image">
 
                 <p>
                   <b> {{ Auth::user()->name }}</b>
@@ -301,15 +301,15 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="{{asset('assets/admin/dist/img/aa.jpg')}}" class="img-circle" alt="User Image">
+          <img src="{{asset('assets/admin/dist/img/logoo.jpg')}}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
         <b> {{ Auth::user()->name}}</b> 
-          {{-- <a href="#"><i class="fa fa-circle text-success"></i> Online</a> --}}
+          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
       <!-- search form -->
-      <form action="#" method="get" class="sidebar-form">
+      {{-- <form action="#" method="get" class="sidebar-form">
         <div class="input-group">
           <input type="text" name="q" class="form-control" placeholder="Search...">
           <span class="input-group-btn">
@@ -317,7 +317,7 @@
                 </button>
               </span>
         </div>
-      </form>
+      </form> --}}
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">

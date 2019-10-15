@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <h5 class="card-header">Data Detail</h5><br>
+                <h5 class="card-header"><center><h3>Detail Data Peminjaman Buku</h3></center></h5><br>
                 <center>
                         <a href="{{ route('detail.create') }}"
                             class="la la-cloud-upload btn btn-info btn-rfur if you know that im lonelyfur if you know that im lonelyounded btn-floating ">&nbsp;Tambah Data
@@ -18,8 +18,8 @@
                         <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Id Peminjam </th>
-                                <th>Id Buku</th>
+                                <th>Nama Peminjam </th>
+                                <th>Nama Buku</th>
                                 <th>Detail Tanggal Kembali</th>
                                 <th>Detail Denda</th>
                                 <th>Detail Kembali</th>
@@ -30,12 +30,12 @@
                         </thead>
                         <tbody>
                         @php $no = 1; @endphp
-                            @foreach ($detail ?? '' as $data)
+                            @foreach ($detail as $data)
                             <tr>
                             <td>{{ $no++ }}</td>
-                                <td>{{ $data->penimjams_id }}</td>
-                                <td>{{ $data->bukus_id }}</td>
-                                <td>{{ $data->detail_tgl_kembal}}</td>
+                                <td>{{ $data->peminjams->pjm_nama }}</td>
+                                <td>{{ $data->bukus->buku_judul }}</td>
+                                <td>{{ $data->detail_tgl_kembali}}</td>
                                 <td>{{ $data->detail_denda }}</td>
                                 <td>{{ $data->detail_kembali }}</td>
                                 

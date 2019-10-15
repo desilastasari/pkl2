@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <h5 class="card-header">Data Buku</h5><br>
+                <h5 class="card-header"><center>Data Buku</center></h5><br>
                 <center>
                         <a href="{{ route('buku.create') }}"
                             class="la la-cloud-upload btn btn-info btn-rfur if you know that im lonelyfur if you know that im lonelyounded btn-floating ">&nbsp;Tambah Data
@@ -42,7 +42,7 @@
                                 <td>{{ $data->buku_pengarang }}</td>
                                 <td>{{ $data->buku_thn_terbit }}</td>
 
-                               <td><img src="{{ asset('assets/img/buku/'.$data->buku_gambar)}}" width="100"></td>
+                              
 								<td style="text-align: center;">
                                     <form action="{{route('buku.destroy', $data->id)}}" method="post">
                                         {{csrf_field()}}

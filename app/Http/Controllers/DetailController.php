@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\detail;
+use App\buku;
+use App\penimjam;
 use Illuminate\Http\Request;
 
 class DetailController extends Controller
@@ -15,7 +17,7 @@ class DetailController extends Controller
     public function index()
     {
         $detail = Detail::all();
-        return view('admin.detail.index', compact('detail'));
+        return view('admin.detail.index', compact('detail','buku','penimjam'));
     }
 
     /**
@@ -25,9 +27,10 @@ class DetailController extends Controller
      */
     public function create()
     {
-        
+        $buku = Buku::all();
+        $penimjam = Penimjam::all();
         $detail = Detail::all();
-        return view('admin.detail.index');
+        return view('admin.detail.create', compact('detail','buku','penimjam'));
     }
 
     /**
@@ -39,8 +42,8 @@ class DetailController extends Controller
     public function store(Request $request)
     {
          $detail = new Detail();
-        $detail->penimjams_id = $request->penimjams_id;
-        $detail->bukus_id = $request->bukus_id;
+        $detail->penimjams_id = $request->pjm_nama;
+        $detail->bukus_id = $request->buku_judul;
         $detail->detail_tgl_kembali = $request->detail_tgl_kembali;
         $detail->detail_denda = $request->detail_denda;
         $detail->detail_kembali = $request->detail_kembali;
@@ -48,7 +51,7 @@ class DetailController extends Controller
        
         $detail->save();
         return redirect()->route('detail.index');
-    }
+   }
 
     /**
      * Display the specified resource.
@@ -56,9 +59,12 @@ class DetailController extends Controller
      * @param  \App\detail  $detail
      * @return \Illuminate\Http\Response
      */
-    public function show(detail $detail)
+    public function show($id)
     {
-        //
+        $buku = Buku::all();
+        $penimjam = Penimjam::all();
+        $detail = Detail::findOrFail($id);
+        return view('admin.detail.show', compact('detail','penimjam','buku'));
     }
 
     /**
@@ -67,9 +73,12 @@ class DetailController extends Controller
      * @param  \App\detail  $detail
      * @return \Illuminate\Http\Response
      */
-    public function edit(detail $detail)
+    public function edit( $id)
     {
-        //
+        $buku = Buku::all();
+        $penimjam = Penimjam::all();
+        $detail = Detail::findOrFail($id);
+        return view('admin.detail.edit',compact('detail','penimjam','buku'));
     }
 
     /**
@@ -79,9 +88,17 @@ class DetailController extends Controller
      * @param  \App\detail  $detail
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, detail $detail)
+    public function update(Request $request,$id)
     {
-        //
+        $detail = Detail::findOrFail($id);
+        $detail->penimjams_id = $request->pjm_nama;
+        $detail->bukus_id = $request->buku_judul;
+        $detail->detail_tgl_kembali = $request->detail_tgl_kembali;
+        $detail->detail_denda = $request->detail_denda;
+        $detail->detail_kembali = $request->detail_kembali;
+
+          $detail->save();
+        return redirect()->route('detail.index');
     }
 
     /**
@@ -90,8 +107,9 @@ class DetailController extends Controller
      * @param  \App\detail  $detail
      * @return \Illuminate\Http\Response
      */
-    public function destroy(detail $detail)
+    public function destroy( $id)
     {
-        //
+         $detail = Detail::destroy($id);
+        return redirect()->route('detail.index');
     }
 }

@@ -7,7 +7,7 @@
                 <div class="card-header">Menampilkan Data Peminjaman</div>
                 <div class="form-group">
                         <label for="">Nama Petugas</label>
-                        <select name="ptg_nama" class="form-control">
+                        <select name="ptg_nama" class="form-control"readonly>
                             @foreach($petugas as $data)
                         <option value="{{ $data->id}}">
                             {{ $data->ptg_nama}}
@@ -17,7 +17,7 @@
                     </div>
                     <div class="form-group">
                         <label for="">Nama peminjam</label>
-                        <select name="pjm_nama" class="form-control">
+                        <select name="pjm_nama" class="form-control"readonly>
                             @foreach($penimjam as $data)
                         <option value="{{ $data->id}}">
                              {{ $data->pjm_nama}}

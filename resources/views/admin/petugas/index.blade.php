@@ -5,7 +5,7 @@
         <div class="col-8">
             <div class="card">
                 
-                <h5 class="card-header">Data Petugas</h5><br>
+                <h5 class="card-header"><center><h3>Data Petugas</h3></center></h5><br>
                 <center>
                         <a href="{{ route('petugas.create') }}"
                             class="la la-cloud-upload btn btn-info btn-rfur if you know that im lonelyfur if you know that im lonelyounded btn-floating">&nbsp;Tambah Data

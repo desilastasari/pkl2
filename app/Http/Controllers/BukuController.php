@@ -68,8 +68,8 @@ class BukuController extends Controller
     {
         $kategori = Kategori::all();
         $penerbit = Penerbit::all();
-        $buku = Buku::all();
-        return view('admin.buku.create', compact('buku','penerbit','kategori'));
+        $buku = Buku::findOrFail($id);
+        return view('admin.buku.show', compact('buku','penerbit','kategori'));
     }
 
     /**
@@ -82,8 +82,8 @@ class BukuController extends Controller
     {
         $kategori = Kategori::all();
         $penerbit = Penerbit::all();
-        $buku = Buku::all();
-        return view('admin.buku.create', compact('buku','penerbit','kategori'));
+        $buku = Buku::findOrFail($id);
+        return view('admin.buku.edit', compact('buku','penerbit','kategori'));
     }
 
     /**
@@ -95,7 +95,7 @@ class BukuController extends Controller
      */
     public function update(Request $request,$id)
     {
-         $buku = new Buku();
+          $buku = Buku::findOrFail($id);
         $buku->kategoris_id = $request->ktg_nama;
         $buku->penerbits_id = $request->pbt_nama;
         $buku->buku_judul = $request->buku_judul;

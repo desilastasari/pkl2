@@ -50,10 +50,10 @@ class KategoriController extends Controller
      * @param  \App\kategori  $kategori
      * @return \Illuminate\Http\Response
      */
-    public function show(kategori $kategori)
+    public function show($id)
     {
         $kategori = Kategori::findOrFail($id);
-        return view('kategori.show', compact('kategori'));
+        return view('admin.kategori.show', compact('kategori'));
     }
 
     /**
@@ -62,9 +62,10 @@ class KategoriController extends Controller
      * @param  \App\kategori  $kategori
      * @return \Illuminate\Http\Response
      */
-    public function edit(kategori $kategori)
+    public function edit($id)
     {
-        //
+        $kategori = Kategori::findOrFail($id);
+        return view('admin.kategori.edit', compact('kategori'));
     }
 
     /**

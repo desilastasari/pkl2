@@ -30,9 +30,9 @@
                         </thead>
                         <tbody>
                         @php $no = 1; @endphp
-                            @foreach ($detail as $data)
                             <tr>
                             <td>{{ $no++ }}</td>
+                            @foreach ($detail as $data)
                                 <td>{{ $data->penimjams_id }}</td>
                                 <td>{{ $data->bukus_id }}</td>
                                 <td>{{ $data->detail_tgl_kembal}}</td>
