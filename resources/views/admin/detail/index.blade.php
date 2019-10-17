@@ -35,7 +35,7 @@
                             <td>{{ $no++ }}</td>
                                 <td>{{ $data->peminjams->pjm_nama }}</td>
                                 <td>{{ $data->bukus->buku_judul }}</td>
-                                <td>{{ $data->detail_tgl_kembali}}</td>
+                                <td>{{ $data->peninjamen->pjmn_tgl_kembali}}</td>
                                 <td>{{ $data->detail_denda }}</td>
                                 <td>{{ $data->detail_kembali }}</td>
                                 

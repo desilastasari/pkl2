@@ -339,15 +339,16 @@
             <i class="fa fa-user"></i>
             <span>Menu Admin</span>
             <span class="pull-right-container">
-              <span class="label label-primary pull-right">6</span>
+              <span class="label label-primary pull-right">7</span>
             </span>
           </a>
           <ul class="treeview-menu">
               @guest
-                        @else
-                        @role('admin')
+                    @else
+                       @role('admin')
 
             <li><a href="{{ url('admin/petugas')}}"><i class="fa fa-circle-o"></i> petugas</a></li>
+            <li><a href="{{ url('admin/penimjam')}}"><i class="fa fa-circle-o"></i> Peminjam</a></li>
             <li><a href="{{ url('admin/peninjaman')}}"><i class="fa fa-circle-o"></i> Peminjaman</a></li>
             <li><a href="{{ url('admin/detail')}}"><i class="fa fa-circle-o"></i> Detail</a></li>
             <li><a href="{{ url('admin/buku')}}"><i class="fa fa-circle-o"></i> Buku</a></li>
@@ -367,11 +368,11 @@
             <i class="fa fa-users"></i>
             <span>Menu Member</span>
              <span class="pull-right-container">
-              <span class="label label-primary pull-right">4</span>
+              <span class="label label-primary pull-right">3</span>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ url('/penimjam')}}"><i class="fa fa-circle-o"></i> Peminjam</a></li>
+           
             <li><a href="{{ url('/pendaftaran')}}"><i class="fa fa-circle-o"></i> Pendaftaran</a></li>
             <li><a href="{{ url('/buku')}}"><i class="fa fa-circle-o"></i> Buku</a></li>
              <li><a href="{{ url('/detail')}}"><i class="fa fa-circle-o"></i> Detail</a></li

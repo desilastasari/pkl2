@@ -17,12 +17,13 @@ class CreateDetailsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedbigInteger('penimjams_id');
             $table->unsignedbigInteger('bukus_id');
-            $table->date('detail_tgl_kembali');
+            $table->unsignedbigInteger('peninjamen_id');
             $table->string('detail_denda');
             $table->string('detail_kembali');
             
             $table->foreign('penimjams_id')->references('id')->on('penimjams')->onDelete('cascade');
             $table->foreign('bukus_id')->references('id')->on('bukus')->onDelete('cascade');
+            $table->foreign('peninjamen_id')->references('id')->on('peninjamen')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -42,8 +42,10 @@
                                 <td>{{ $data->buku_pengarang }}</td>
                                 <td>{{ $data->buku_thn_terbit }}</td>
 
-                              
+                          
 								<td style="text-align: center;">
+                                      
+                       
                                     <form action="{{route('buku.destroy', $data->id)}}" method="post">
                                         {{csrf_field()}}
 									<a href="{{route('buku.edit', $data->id)}}"
@@ -54,8 +56,10 @@
 									</a>
 										<input type="hidden" name="_method" value="DELETE">
 										<button type="submit" class="zmdi zmdi-delete btn-rounded btn-floating btn btn-dangerbtn btn-danger "> Delete</button>
-									</form>
-								</td>
+                                    </form>
+                 
+                                </td>
+                     
                             </tr>
                             @endforeach
                         </tbody>

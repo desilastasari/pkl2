@@ -11,7 +11,7 @@
                     <form action="{{ route('detail.store') }}" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
-    <div class="form-group">
+                    <div class="form-group">
                         <label for="">Nama peminjam</label>
                         <select name="pjm_nama" class="form-control">
                             @foreach($penimjam as $data)
@@ -22,7 +22,7 @@
                         </select>
                     </div>
     
-    <div class="form-group">
+                     <div class="form-group">
                         <label for="">Nama Buku</label>
                         <select name="buku_judul" class="form-control">
                             @foreach($buku as $data)
@@ -32,10 +32,18 @@
                         @endforeach
                         </select>
                     </div>
-    <div class="form-group">
-        <label for="">Detail Tanggal Kembali </label>
-        <input class="form-control" type="date" name="detail_tgl_kembali">
-    </div>
+
+                      <div class="form-group">
+                        <label for="">Detail Tanggal Kembali</label>
+                        <select name="pjmn_tgl_kembali" class="form-control">
+                            @foreach($peninjaman as $data)
+                        <option value="{{ $data->id}}">
+                             {{ $data->pjmn_tgl_kembali}}
+                        </option>
+                        @endforeach
+                        </select>
+                    </div>
+   
      <div class="form-group">
         <label for="">Detail Denda </label>
         <input class="form-control" type="text" name="detail_denda">

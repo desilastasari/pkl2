@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\detail;
 use App\buku;
 use App\penimjam;
+use App\peninjaman;
 use Illuminate\Http\Request;
 
 class DetailController extends Controller
@@ -17,7 +18,7 @@ class DetailController extends Controller
     public function index()
     {
         $detail = Detail::all();
-        return view('admin.detail.index', compact('detail','buku','penimjam'));
+        return view('admin.detail.index', compact('detail'));
     }
 
     /**
@@ -27,10 +28,12 @@ class DetailController extends Controller
      */
     public function create()
     {
-        $buku = Buku::all();
+    
+        $peninjaman = Peninjaman::all();
         $penimjam = Penimjam::all();
+        $buku = Buku::all();
         $detail = Detail::all();
-        return view('admin.detail.create', compact('detail','buku','penimjam'));
+        return view('admin.detail.create', compact('detail','buku','penimjam','peninjaman'));
     }
 
     /**
@@ -44,7 +47,7 @@ class DetailController extends Controller
          $detail = new Detail();
         $detail->penimjams_id = $request->pjm_nama;
         $detail->bukus_id = $request->buku_judul;
-        $detail->detail_tgl_kembali = $request->detail_tgl_kembali;
+        $detail->peninjamen_id = $request->pjmn_tgl_kembali;
         $detail->detail_denda = $request->detail_denda;
         $detail->detail_kembali = $request->detail_kembali;
 
@@ -93,7 +96,7 @@ class DetailController extends Controller
         $detail = Detail::findOrFail($id);
         $detail->penimjams_id = $request->pjm_nama;
         $detail->bukus_id = $request->buku_judul;
-        $detail->detail_tgl_kembali = $request->detail_tgl_kembali;
+        $detail->peninjamen_id = $request->pjmn_tgl_kembali;
         $detail->detail_denda = $request->detail_denda;
         $detail->detail_kembali = $request->detail_kembali;
 
